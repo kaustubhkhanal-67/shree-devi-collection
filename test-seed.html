@@ -1,0 +1,8 @@
+<!doctype html><script>
+localStorage.setItem('shree-devi-orders', JSON.stringify([{
+  orderNumber:'SD-DEMO-001', createdAt:new Date().toISOString(), payment:'QR payment', transactionCode:'ESW-DEMO-458921', total:1650,
+  customer:{name:'Demo Customer',phone:'9800000000',email:'demo@example.com',city:'Bhairahawa',street:'Bank Road',address:'Demo Chowk, Bhairahawa',note:'Demo order for testing'},
+  items:[{name:'Customized frame with customer photo',qty:1,price:1200,detail:'Rs. 1,200 · Full size 12 × 18 inch',customImage:'assets/frame-white.jpeg'},{name:'Gift order',qty:1,price:450,detail:'Demo gift item'}], paymentProof:'assets/esewa-qr.jpeg'
+}]));
+location.replace('/dashboard');
+</script>

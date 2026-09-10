@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Devi Collection · Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <header class="dashboard-header"><a class="brand" href="/"><span class="brand-mark">SD</span><span><strong>Shree Devi</strong><small>COLLECTION</small></span></a><div><span class="dashboard-label">ADMIN DASHBOARD</span><a class="back-link" href="/">View shop ↗</a></div></header>
+  <main class="dashboard-wrap">
+    <section class="dashboard-heading"><div><p class="eyebrow">ORDERS AT A GLANCE</p><h1>Good morning, Shree Devi.</h1><p>Track orders and customer payment details in one place.</p></div><button class="button dark" id="export-orders">Export orders CSV <span>↓</span></button></section>
+    <section class="metric-grid"><article><span>Total orders</span><strong id="metric-orders">0</strong></article><article><span>Total sales</span><strong id="metric-sales">Rs. 0</strong></article><article><span>QR payments</span><strong id="metric-qr">0</strong></article><article><span>COD orders</span><strong id="metric-cod">0</strong></article></section>
+    <section class="orders-panel"><div class="panel-head"><div><p class="eyebrow">RECENT ACTIVITY</p><h2>Customer orders</h2></div><div class="panel-actions"><input id="order-search" type="search" placeholder="Search name, phone or city" /><button class="button light" id="refresh-orders">Refresh</button></div></div><div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Delivery</th><th>Payment</th><th>Total</th><th>Date</th><th></th></tr></thead><tbody id="orders-body"><tr><td colspan="8" class="empty-state">No orders yet. New orders will appear here.</td></tr></tbody></table></div></section>
+  </main>
+  <div class="order-modal" id="order-modal" aria-hidden="true"><div class="order-modal-card"><button class="order-modal-close" id="order-modal-close" aria-label="Close order details">×</button><div id="order-detail"></div></div></div>
+  <script src="dashboard.js"></script>
+</body>
+</html>

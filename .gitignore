@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+orders.json
+.test-browser-profile/
+.capture-profile-1/
+.vercel/
+*.log

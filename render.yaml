@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: shree-devi-collection
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: ESEWA_ENV
+        value: uat
+      - key: ESEWA_PRODUCT_CODE
+        value: EPAYTEST
+      - key: ESEWA_SECRET_KEY
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
