@@ -18,6 +18,7 @@
   </main>
   <div class="order-modal" id="order-modal" aria-hidden="true"><div class="order-modal-card"><button class="order-modal-close" id="order-modal-close" aria-label="Close order details">×</button><div id="order-detail"></div></div></div>
   <section class="admin-login" id="admin-login" hidden aria-hidden="true"><div class="admin-login-card"><p class="eyebrow">PRIVATE DASHBOARD</p><h1>Sign in to view orders</h1><p>Enter the admin token configured for this website.</p><form id="admin-login-form"><label for="admin-token">Admin token</label><input id="admin-token" type="password" autocomplete="current-password" required /><button class="button dark" type="submit">Open dashboard</button><p class="login-message" id="login-message" aria-live="polite"></p></form></div></section>
-  <script src="dashboard.js"></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script src="dashboard.js?v=2"></script>
 </body>
 </html>

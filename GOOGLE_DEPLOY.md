@@ -5,9 +5,7 @@ This project is prepared for Google Cloud Run. Cloud Run serves the website and 
 1. Install the Google Cloud CLI and sign in:
 
 ```powershell
-gcloud auth login
-gcloud init
-```
+gcloud auth logi
 
 2. From this folder, set your Google Cloud project:
 
