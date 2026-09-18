@@ -1,0 +1,8 @@
+node_modules
+.git
+.gitignore
+.env
+.env.*
+orders.json
+.capture-profile-1
+.test-browser-profile
