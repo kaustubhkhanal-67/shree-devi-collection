@@ -1,4 +1,5 @@
 const ordersKey = 'shree-devi-orders';
+const adminTokenKey = 'shree-devi-admin-token';
 const money = value => `Rs. ${Number(value || 0).toLocaleString()}`;
 const readOrders = () => { try { return JSON.parse(localStorage.getItem(ordersKey) || '[]'); } catch { return []; } };
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
@@ -20,7 +21,9 @@ function closeOrder(){ const modal = document.querySelector('#order-modal'); mod
 document.querySelector('#order-modal-close').addEventListener('click', closeOrder);
 document.querySelector('#order-modal').addEventListener('click', event => { if (event.target.id === 'order-modal') closeOrder(); });
 document.querySelector('#order-search').addEventListener('input', render);
-async function loadOrders(){ try { const response = await fetch('/api/orders', {cache:'no-store'}); if (!response.ok) throw new Error('Order API unavailable'); const data = await response.json(); orders = data.orders || []; render(); } catch { orders = readOrders(); render(); } }
+function showLogin(show = true){ const login = document.querySelector('#admin-login'); const main = document.querySelector('.dashboard-wrap'); login.hidden = !show; login.setAttribute('aria-hidden', String(!show)); main.hidden = show; }
+async function loadOrders(){ try { const token = localStorage.getItem(adminTokenKey) || ''; const response = await fetch('/api/orders', {cache:'no-store', headers: token ? {'X-Admin-Token': token} : {}}); if (response.status === 401) { showLogin(true); return; } if (!response.ok) throw new Error('Order API unavailable'); const data = await response.json(); orders = data.orders || []; showLogin(false); render(); } catch { orders = readOrders(); showLogin(false); render(); } }
+document.querySelector('#admin-login-form').addEventListener('submit', async event => { event.preventDefault(); const token = document.querySelector('#admin-token').value.trim(); localStorage.setItem(adminTokenKey, token); document.querySelector('#login-message').textContent = 'Checking token…'; await loadOrders(); if (!document.querySelector('#admin-login').hidden) { document.querySelector('#login-message').textContent = 'That token was not accepted.'; localStorage.removeItem(adminTokenKey); } });
 document.querySelector('#refresh-orders').addEventListener('click', loadOrders);
 document.querySelector('#export-orders').addEventListener('click', () => { const headers = ['Order','Date','Customer','Phone','City','Street','Payment','Total','Items']; const rows = orders.map(order => { const c = order.customer || {}; return [order.orderNumber,order.createdAt,c.name,c.phone,c.city,c.street,order.payment,order.total,(order.items || []).map(item => `${item.name} x${item.qty}`).join(' | ')].map(value => `"${String(value ?? '').replace(/"/g,'""')}"`).join(','); }); const blob = new Blob([[headers.join(','),...rows].join('\n')], {type:'text/csv;charset=utf-8'}); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'shree-devi-orders.csv'; link.click(); URL.revokeObjectURL(link.href); });
 loadOrders();

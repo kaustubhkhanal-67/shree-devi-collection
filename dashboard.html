@@ -17,6 +17,7 @@
     <section class="orders-panel"><div class="panel-head"><div><p class="eyebrow">RECENT ACTIVITY</p><h2>Customer orders</h2></div><div class="panel-actions"><input id="order-search" type="search" placeholder="Search name, phone or city" /><button class="button light" id="refresh-orders">Refresh</button></div></div><div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Delivery</th><th>Payment</th><th>Total</th><th>Date</th><th></th></tr></thead><tbody id="orders-body"><tr><td colspan="8" class="empty-state">No orders yet. New orders will appear here.</td></tr></tbody></table></div></section>
   </main>
   <div class="order-modal" id="order-modal" aria-hidden="true"><div class="order-modal-card"><button class="order-modal-close" id="order-modal-close" aria-label="Close order details">×</button><div id="order-detail"></div></div></div>
+  <section class="admin-login" id="admin-login" hidden aria-hidden="true"><div class="admin-login-card"><p class="eyebrow">PRIVATE DASHBOARD</p><h1>Sign in to view orders</h1><p>Enter the admin token configured for this website.</p><form id="admin-login-form"><label for="admin-token">Admin token</label><input id="admin-token" type="password" autocomplete="current-password" required /><button class="button dark" type="submit">Open dashboard</button><p class="login-message" id="login-message" aria-live="polite"></p></form></div></section>
   <script src="dashboard.js"></script>
 </body>
 </html>

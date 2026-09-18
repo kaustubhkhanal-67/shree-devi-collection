@@ -15,3 +15,7 @@ services:
         sync: false
       - key: PUBLIC_URL
         sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
